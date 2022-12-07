@@ -350,3 +350,21 @@ function searchByTraits(people){
 }
   
 }}
+
+function findPersonDescendants(person, people){
+    // Looking for the person's descendants
+    // Which means take the person's Id, look to see if they have children
+    // Then, see if those children have kids themselves
+    let personDescendants= ''
+    let childrenInfo= ''
+    let personChildren= people.filter(function(el){
+        if(el.parents.includes(person.id)){
+            return true;
+        }
+        
+    })
+
+    if (personChildren == 0){
+        childrenInfo = `${person.firstName} ${person.lastName} has no descendants`;
+
+    }
