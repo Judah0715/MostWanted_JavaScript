@@ -140,6 +140,15 @@ function displayPeople(people) {
 function displayPerson(person) {
     let personInfo = `First Name: ${person.firstName}\n`;
     personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `Gender: ${person.gender}\n`;
+    personInfo += `DOB: ${person.dob}\n`;
+    personInfo += `Height: ${person.height}\n`;
+    personInfo += `Weight: ${person.weight}\n`;
+    personInfo += `Eye Color: ${person.eyecolor}\n`;
+    personInfo += `Occupation: ${person.occupation}\n`;
+    personInfo += `Parents: ${person.parents}\n`;
+    personInfo += `Current Spouse: ${person.currentSpouse}\n`;
+    
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
     alert(personInfo);
 }
@@ -169,7 +178,7 @@ function promptFor(question, valid) {
 function yesNo(input) {
     return input.toLowerCase() === "yes" || input.toLowerCase() === "no";
 }
-// End of yesNo()
+// End of yesNo() 
 
 /**
  * This helper function operates as a default callback for promptFor's validation.
@@ -184,3 +193,20 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+
+function findPersonFamily(person, people){
+    let personFamily= ''
+    let spouseId = ''
+
+    if (person.currentSpouse == null){
+        spouseId= 'No Current Spouse'; 
+    };
+
+    if (person.currentSpouse != null){
+        let personSpouse = people.filter(function(el){
+        if(el.id === person.currentSpouse){
+            return true;
+        }})
+        spouseId = `${personSpouse[0].firstName} ${personSpouse[0].lastName}\n`
+    };
