@@ -273,22 +273,22 @@ function searchByTraits(people){
             traitChoose = prompt('keep choosing? yes or no: ')
             
             break;
-
-            case "Eye Color":
-                let traitEyeColors = promptFor('Enter Eye Color or skip: ', chars)
-                people = people.filter(function (el){
-                    if(el.eyeColor == traitEyeColors)
-                        return true;
-                            
+                    
+        case "Eye Color":
+            let traitEyeColors = promptFor('Enter Eye Color or skip: ', chars)
+            people = people.filter(function (el){
+                if(el.eyeColor == traitEyeColors)
+                    return true;
+                        
+            })
+            alert(people.map(function (person){
+                return `${person.firstName} ${person.lastName}`;
                 })
-                alert(people.map(function (person){
-                    return `${person.firstName} ${person.lastName}`;
-                    })
-                    .join("\n"))
-                traitChoose = prompt('keep choosing? yes or no: ')
-                break;
-                
-                case "Occupation":
+                .join("\n"))
+            traitChoose = prompt('keep choosing? yes or no: ')
+            break;
+
+        case "Occupation":
             let traitOccupation = promptFor('Enter Occupation or skip: ', chars)
             people = people.filter(function (el){
                 if(el.occupation == traitOccupation)
@@ -308,30 +308,30 @@ function searchByTraits(people){
                 if (el.dob == traitDob)
                     return true;
 
+            })
+            alert(people.map(function (person){
+                return `${person.firstName} ${person.lastName}`;
                 })
-                alert(people.map(function (person){
-                    return `${person.firstName} ${person.lastName}`;
-                    })
-                    .join("\n"))
-                    traitChoose = prompt('keep choosing? yes or no: ')
-                    break;
-    
-            case "Height":
-                let traitHeight = promptFor('Enter persons height or skip: ', chars)
-                people = people.filter(function(el){
-                    if (el.height.toString() == traitHeight)
-                        return true;
-    
-                })
-                alert(people.map(function (person){
-                    return `${person.firstName} ${person.lastName}`;
-                    })
-                    .join("\n"))
+                .join("\n"))
                 traitChoose = prompt('keep choosing? yes or no: ')
-                break; 
-    
-            case "Weight":  
-            
+                break;
+
+        case "Height":
+            let traitHeight = promptFor('Enter persons height or skip: ', chars)
+            people = people.filter(function(el){
+                if (el.height.toString() == traitHeight)
+                    return true;
+
+            })
+            alert(people.map(function (person){
+                return `${person.firstName} ${person.lastName}`;
+                })
+                .join("\n"))
+            traitChoose = prompt('keep choosing? yes or no: ')
+            break; 
+
+        case "Weight":
+        
             let traitWeight = promptFor('Enter persons weight: ', chars)
             people = people.filter(function(el){
                 if (el.weight.toString() == traitWeight)
@@ -365,7 +365,6 @@ function findPersonDescendants(person, people){
         childrenInfo = `${person.firstName} ${person.lastName} has no descendants`;
 
     }
-
 
     let personGrandChildrenList = ''
     if (personChildren != 0){
