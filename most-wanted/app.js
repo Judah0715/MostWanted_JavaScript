@@ -210,3 +210,37 @@ function findPersonFamily(person, people){
         }})
         spouseId = `${personSpouse[0].firstName} ${personSpouse[0].lastName}\n`
     };
+
+    let parentId= ''
+    let personsParents = person.parents;
+    let familyMembers = people.filter(function (el){
+        if (el.id === personsParents[0] || el.id == personsParents[1]){
+            return true;}
+        });
+
+    if(familyMembers.length != 0) {
+        parentId= (familyMembers.map(function (el){
+            return `${el.firstName} ${el.lastName}`;
+        }).join("\n")
+        )};
+
+
+
+    if(familyMembers.length == 0){
+        parentId= `No parents in the system.`;
+    }
+
+
+    let siblingId=''
+
+    if(person.parents.length != 0) {
+        let siblingMembers= people.filter(function(el){
+            if(el.parents[0] == person.parents[0] && el.parents[1] == person.parents[1]){
+                return true;
+            }})
+        siblingId = (siblingMembers.map(function (person){
+            return `${person.firstName} ${person.lastName}`;
+            })
+            .join("\n"));
+
+    }
