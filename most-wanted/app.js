@@ -368,3 +368,35 @@ function findPersonDescendants(person, people){
         childrenInfo = `${person.firstName} ${person.lastName} has no descendants`;
 
     }
+
+
+    let personGrandChildrenList = ''
+    if (personChildren != 0){
+        childrenInfo = (personChildren.map(function(el){
+            return `${el.firstName} ${el.lastName}`
+        }) .join ("\n"))
+        for ( let children of personChildren){
+            let personGrandChildren = people.filter(function(el){
+                if(el.parents.includes(children.id)){
+                    return true
+                }
+            })
+            personGrandChildrenList = personGrandChildren
+        }
+    }
+
+    let grandChildrenInfo= ''
+
+    if (personGrandChildrenList == 0){
+        grandChildrenInfo = `End of Descendants`
+    }
+
+    if(personGrandChildrenList != 0){
+        grandChildrenInfo = (personGrandChildrenList.map(function(el){
+            return `${el.firstName} ${el.lastName}`;    
+        }).join("\n"))
+    }
+    
+    personDescendants = `${person.firstName} ${person.lastName}'s Descendants Info:\nChildren: ${childrenInfo}\nGrandChildren: ${grandChildrenInfo}`
+    return (personDescendants)
+}
