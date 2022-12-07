@@ -273,3 +273,17 @@ function searchByTraits(people){
             traitChoose = prompt('keep choosing? yes or no: ')
             
             break;
+
+            case "Eye Color":
+                let traitEyeColors = promptFor('Enter Eye Color or skip: ', chars)
+                people = people.filter(function (el){
+                    if(el.eyeColor == traitEyeColors)
+                        return true;
+                            
+                })
+                alert(people.map(function (person){
+                    return `${person.firstName} ${person.lastName}`;
+                    })
+                    .join("\n"))
+                traitChoose = prompt('keep choosing? yes or no: ')
+                break;   
